@@ -17,6 +17,10 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+"""
+FPulse application main functions.
+"""
+
 import itertools
 import time
 
