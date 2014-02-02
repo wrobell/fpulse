@@ -24,14 +24,16 @@ import argparse
 
 parser = argparse.ArgumentParser(description='fpulse 0.1.0.')
 parser.add_argument(
-    'driver', choices=['print'], help='fpulse LED driver'
-    #'driver', choices=['print', 'tlc5947'], help='fpulse LED driver'
+    'driver', choices=['print', 'tlc5947'], help='fpulse LED driver'
 )
 parser.add_argument('conf', type=str, help='fpulse LED configuration file')
 args = parser.parse_args()
 
 if args.driver == 'print':
     from fpulse.driver.hexprint import Driver
+    drv = Driver()
+elif args.driver == 'tlc5947':
+    from fpulse.driver.tlc5947 import Driver
     drv = Driver()
 else:
     assert False, 'argument parser error'
