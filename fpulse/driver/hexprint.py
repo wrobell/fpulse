@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 #
 # FPulse - LED pulsing application.
 #
@@ -18,24 +17,34 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-from fpulse.core import start
+"""
+Fake LED driver to print LED brightness values as hex values.
+"""
 
-import argparse
+class Driver(object):
+    """
+    Hex LED driver.
+    """
 
-parser = argparse.ArgumentParser(description='fpulse 0.1.0.')
-parser.add_argument(
-    'driver', choices=['print'], help='fpulse LED driver'
-    #'driver', choices=['print', 'tlc5947'], help='fpulse LED driver'
-)
-parser.add_argument('conf', type=str, help='fpulse LED configuration file')
-args = parser.parse_args()
+    N_LEDS = 16
 
-if args.driver == 'print':
-    from fpulse.driver.hexprint import Driver
-    drv = Driver()
-else:
-    assert False, 'argument parser error'
+    def __init__(self):
+        """
+        Create the driver.
+        """
+        self._values = [0]  * self.N_LEDS
 
-start(drv, args.conf)
+
+    def set_led_all(self, v):
+        self._values = [int(v * 15)] * self.N_LEDS
+
+
+    def set_led(self, led, v):
+        self._values[led - 1] = int(v * 15)
+
+
+    def write(self):
+        print(''.join('{:x}'.format(v) for v in self._values))
+
 
 # vim: sw=4:et:ai
