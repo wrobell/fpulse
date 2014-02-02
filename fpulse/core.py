@@ -104,6 +104,6 @@ def start(driver, fn):
         for k, v in zip(leds, lv):
             driver.set_led(k, v)
         driver.write()
-        time.sleep(k * p_time)
+        time.sleep(p_time * p_time)
 
 # vim: sw=4:et:ai
