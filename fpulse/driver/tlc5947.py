@@ -19,6 +19,21 @@
 
 """
 TLC5947 LED driver.
+
+The driver works with Raspberry Pi at the moment only.
+
+The schematics of connection::
+
+    TLC5947      Raspberry Pi
+    Name         Pin     Name
+    --------------------------------
+    V+           Any     3v3 Power
+    GND          Any     Ground
+    DIN          P19     GPIO 10 (MOSI)
+    CLK          P23     GPIO 11 (SCLK)
+    /OE          Any     Ground
+    LAT          P24     GPIO 8 (CE0)
+
 """
 
 import ctypes as ct
