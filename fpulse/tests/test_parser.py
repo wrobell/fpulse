@@ -21,7 +21,7 @@
 FPulse parser tests.
 """
 
-from fpulse.parser import str2time, clean_file, parse_file
+from fpulse.parser import str2time, clean_file, parse_file, RE_SEQ
 
 import unittest
 
@@ -51,6 +51,27 @@ class TimeParserTestCase(unittest.TestCase):
         """
         t = str2time('')
         self.assertEquals(1, t)
+
+
+class SeqRegexpTestCase(unittest.TestCase):
+    """
+    LED sequence regular expression tests.
+    """
+    def test_re(self):
+        """
+        Test LED sequence regular expression
+        """
+        v = RE_SEQ.findall('1')
+        self.assertEquals([('1', '')], v)
+
+        v = RE_SEQ.findall('1/1')
+        self.assertEquals([('1', '1')], v)
+
+        v = RE_SEQ.findall('1/2')
+        self.assertEquals([('1', '2')], v)
+
+        v = RE_SEQ.findall('1/0.5')
+        self.assertEquals([('1', '0.5')], v)
 
 
 
