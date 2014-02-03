@@ -22,6 +22,7 @@ TLC5947 LED driver.
 """
 
 import ctypes as ct
+from binascii import unhexlify
 
 class Driver(object):
     """
@@ -60,13 +61,8 @@ class Driver(object):
 
 
     def _convert(self, values):
-        data = []
-        for i in range(23, 0, -2):
-            data.append((values[i] >> 4))
-            data.append(((values[i] & 0x0f) << 4) | (values[i - 1] >> 8))
-            data.append(values[i - 1] & 0xff)
-        #from binascii import unhexlify
-        #data = unhexlify(''.join(reversed(['{:03x}'.format(v) for v in (values)])))
+        s = ''.join('{:03x}'.format(v) for v in reversed(values))
+        data = unhexlify(s)
         return self._t_array(*data)
 
 
