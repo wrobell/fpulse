@@ -100,10 +100,10 @@ def start(driver, fn):
     p_time = pulse_time(pulses)
     values = transform_pulses(pulses, p_time)
 
-    for k, lv in itertools.cycle(values):
-        for k, v in zip(leds, lv):
-            driver.set_led(k, v)
+    for k, led_values in itertools.cycle(values):
+        for led, v in zip(leds, led_values):
+            driver.set_led(led, v)
         driver.write()
-        time.sleep(p_time * p_time)
+        time.sleep(k * p_time)
 
 # vim: sw=4:et:ai
