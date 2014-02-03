@@ -44,7 +44,8 @@ class Driver(object):
 
 
     def write(self):
-        print(''.join('{:x}'.format(v) for v in self._values))
+        s = ''.join('{:x}'.format(v) for v in self._values)
+        print('\r' + s, end='')
 
 
 # vim: sw=4:et:ai
