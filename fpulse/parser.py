@@ -30,7 +30,7 @@ LED pulse is LED's brightness for a period of time.
 :var time: Time in seconds (can be fractional, i.e. 0.5s).
 """
 
-RE_SEQ = re.compile('(?:([0-9])(?:/([0-9]+(?:\.[0-9]+)?))?)(?:\s+|$)')
+RE_SEQ = re.compile('(?:([01]|0\.[0-9]+)(?:/([0-9]+(?:\.[0-9]+)?))?)(?:\s+|$)')
 
 def str2time(s):
     """

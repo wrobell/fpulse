@@ -73,6 +73,12 @@ class SeqRegexpTestCase(unittest.TestCase):
         v = RE_SEQ.findall('1/0.5')
         self.assertEquals([('1', '0.5')], v)
 
+        v = RE_SEQ.findall('0.5/1')
+        self.assertEquals([('0.5', '1')], v)
+
+        v = RE_SEQ.findall('0.4/0.2')
+        self.assertEquals([('0.4', '0.2')], v)
+
 
 
 class FileParsingTestCase(unittest.TestCase):
