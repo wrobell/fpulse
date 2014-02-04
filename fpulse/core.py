@@ -23,6 +23,7 @@ FPulse application main functions.
 
 import itertools
 import time
+import signal
 
 from .parser import parse_file
 from .ft import lcmm, flatten
@@ -91,10 +92,22 @@ def transform_pulses(pulses, p_time):
     return values
 
 
+def signal_term_handler(sig, frame):
+    """
+    Raise SystemExit error on SIGTERM to quit FPulse. This allows to
+    shutdown the application properly .
+    """
+    if sig == signal.SIGTERM:
+        raise SystemExit(0)
+
+
 def start(driver, fn):
     """
     Start LED pulsing application.
     """
+    # enable proper fpulse shutdown on SIGTERM
+    signal.signal(signal.SIGTERM, signal_term_handler)
+
     f = open(fn)
     leds, pulses = parse_file(f)
     p_time = pulse_time(pulses)
