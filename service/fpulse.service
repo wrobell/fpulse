@@ -3,6 +3,7 @@ Description=fpulse - LED pulsing application daemon
 
 [Service]
 Type=simple
+Restart=always
 EnvironmentFile=/etc/sysconfig/fpulse.path
 ExecStart=/usr/bin/fpulse tlc5947 /etc/fpulse/fpulse.conf
 
