@@ -1,0 +1,5 @@
+# additional paths for libraries
+# LD_LIBRARY_PATH=
+
+# additional paths for python modules
+# PYTHONPATH=
