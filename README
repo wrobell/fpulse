@@ -1,0 +1,29 @@
+FPulse is LED pulsing application.
+
+The specification of pulse sequence for each LED is defined in
+a configuration file. FPulse reads configuration file and changes
+brightness of LEDs according to the configured specification.
+
+Tested on Raspberry Pi with TLC5947. To run it on Raspberry Pi use provided
+Systemd service file or run it manually, i.e.::
+
+    $ fpulse tlc5947 morse.conf
+
+For testing purposes, one can run FPulse on any computer with the following
+command::
+
+    $ fpulse print morse.conf
+
+Sample configuration files are in `conf` directory.
+
+The TLC5947 driver requires `bcm2835` shared library. To build the
+library::
+
+    $ cd bcm2835-{VER}
+    $ ./configure
+    $ make
+    $ cd src
+    $ gcc -shared bcm2835.o -o libbcm2835.so
+
+Install the `bcm2835` shared library in appropriate directory or set
+`LD_LIBRARY_PATH` environment variable appropriately.
