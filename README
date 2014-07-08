@@ -16,8 +16,12 @@ command::
 
 Sample configuration files are in `conf` directory.
 
-The TLC5947 driver requires `bcm2835` shared library. To build the
-library::
+The TLC5947 driver requires `bcm2835` shared library, which can be
+downloaded from::
+
+    http://www.airspayce.com/mikem/bcm2835/
+
+To build the library::
 
     $ cd bcm2835-{VER}
     $ ./configure
