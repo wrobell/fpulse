@@ -16,6 +16,17 @@ command::
 
 Sample configuration files are in `conf` directory.
 
+TLC5947 Driver
+==============
+TLC5947 driver was tested with Adafruit 24-Channel 12-bit PWM LED Driver
+having SPI interface
+
+    http://www.adafruit.com/products/1429
+
+The connection schematics is presented in the documentation of the driver
+
+    fpulse/driver/tlc5947.py
+
 The TLC5947 driver requires `bcm2835` shared library, which can be
 downloaded from::
 
@@ -31,3 +42,4 @@ To build the library::
 
 Install the `bcm2835` shared library in appropriate directory or set
 `LD_LIBRARY_PATH` environment variable appropriately.
+
