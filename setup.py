@@ -31,7 +31,7 @@ setup(
     description='FPulse - LED pulsing application',
     author='Artur Wroblewski',
     author_email='wrobell@pld-linux.org',
-    setup_requires = ['setuptools_git >= 1.0',],
+    setup_requires=['setuptools_git >= 1.0',],
     packages=find_packages('.'),
     scripts=('bin/fpulse',),
     include_package_data=True,
@@ -40,7 +40,7 @@ setup(
 FPulse - LED pulsing application.
 """,
     classifiers=[
-        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)'
+        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
         'Programming Language :: Python :: 3',
         'Development Status :: 4 - Beta',
     ],
