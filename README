@@ -35,10 +35,10 @@ downloaded from::
 To build the library::
 
     $ cd bcm2835-{VER}
-    $ ./configure
+    $ ./configure CFLAGS=-fPIC
     $ make
     $ cd src
-    $ gcc -shared bcm2835.o -o libbcm2835.so
+    $ gcc -shared bcm2835.o -o libbcm2835.so -fPIC
 
 Install the `bcm2835` shared library in appropriate directory or set
 `LD_LIBRARY_PATH` environment variable appropriately.
